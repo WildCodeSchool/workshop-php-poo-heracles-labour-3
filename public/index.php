@@ -10,7 +10,7 @@ use App\Weapon;
 $sword = new Weapon;
 $shield = new Shield;
 $hero = new Hero();
-$hero->setWeapon($sword);
-$hero->setShield($shield);
+// $hero->setWeapon($sword);
+// $hero->setShield($shield);
 
 require 'hero.php';

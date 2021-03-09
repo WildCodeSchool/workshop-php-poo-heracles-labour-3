@@ -22,10 +22,14 @@
     <main class="hero">
         <div class="slots equipment">
             <div data-slot="Main weapon" class="slot">
-                <?php include $hero->getWeapon()->render(); ?>
+                <?php if ($hero->getWeapon() instanceof App\Weapon) : 
+                     include $hero->getWeapon()->render(); 
+                endif; ?>
             </div>
             <div data-slot="Shield" class="slot">
-                <?php include $hero->getShield()->render(); ?>
+                <?php if ($hero->getShield() instanceof App\Shield) : 
+                    include $hero->getShield()->render(); 
+                endif; ?>
             </div>
             <div data-slot="Secondary weapon" class="slot"></div>
             <div data-slot="Head" class="slot"></div>
@@ -41,7 +45,7 @@
             <div class="avatar">
                 <?php include $hero->render(); ?>
             </div>
-            <p class="level">Level 1</p>            
+            <p class="level">Level 1</p>
         </div>
 
         <div class="slots inventory">

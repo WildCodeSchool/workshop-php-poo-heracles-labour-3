@@ -92,9 +92,9 @@ class Hero
     {
         $attack = $this->getStrength();
 
-        if ($this->getWeapon() instanceof Weapon) {
-            $attack += $this->getWeapon()->getDamage();
-        }
+        // if ($this->getWeapon() instanceof Weapon) {
+        //     $attack += $this->getWeapon()->getDamage();
+        // }
 
         return $attack;
     }
@@ -104,9 +104,9 @@ class Hero
     {
         $defense = $this->getDexterity();
 
-        if ($this->getShield() instanceof Shield) {
-            $defense += $this->getShield()->getProtection();
-        }
+        // if ($this->getShield() instanceof Shield) {
+        //     $defense += $this->getShield()->getProtection();
+        // }
         return $defense;
     }
 
