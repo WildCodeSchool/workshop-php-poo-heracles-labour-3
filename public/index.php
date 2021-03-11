@@ -13,4 +13,5 @@ $hero = new Hero();
 // $hero->setWeapon($sword);
 // $hero->setShield($shield);
 
+
 require 'hero.php';
