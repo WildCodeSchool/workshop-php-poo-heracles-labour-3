@@ -22,16 +22,20 @@
     <main class="hero">
         <div class="slots equipment">
             <div data-slot="Main weapon" class="slot">
-                <?php if ($hero->getWeapon() instanceof App\Weapon) : 
-                     include $hero->getWeapon()->render(); 
+                <?php if ($hero->getWeapon() instanceof App\Weapon) :
+                    include $hero->getWeapon()->render();
                 endif; ?>
             </div>
             <div data-slot="Shield" class="slot">
-                <?php if ($hero->getShield() instanceof App\Shield) : 
-                    include $hero->getShield()->render(); 
+                <?php if ($hero->getShield() instanceof App\Shield) :
+                    include $hero->getShield()->render();
                 endif; ?>
             </div>
-            <div data-slot="Secondary weapon" class="slot"></div>
+            <div data-slot="Secondary weapon" class="slot">
+                <?php if ($hero->getSecondaryWeapon() instanceof App\Weapon) :
+                    include $hero->getSecondaryWeapon()->render();
+                endif; ?>
+            </div>
             <div data-slot="Head" class="slot"></div>
             <div data-slot="Ring" class="slot"></div>
             <div data-slot="Armory" class="slot"></div>
