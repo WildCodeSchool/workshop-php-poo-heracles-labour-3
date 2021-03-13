@@ -55,7 +55,11 @@ Voilà, ta classe est prête, tu n'as plus qu'à l'utiliser !
 
 Heracles pénètre dans la grotte, le lion est là, ses yeux rouges pointés vers l'intrus. Le combat est imminent.
 
-- Dans le fichier *index.php*, créé une boucle permettant d'effectuer un combat à mort ! Tant qu'un des deux ennemis a une vie > 0, le combat continue donc. À chaque "round" 🕛, Heracles attaque le lion, puis le lion attaque Heracles. Tu dois afficher le numéro du round, qui attaque qui, et les points de vie restant. Une fois l'un des deux vaincus, tu dois alors afficher le vainqueur 🏆 et le perdant 💀. La capture d'écran ci-dessous te résume ce qui est attendu.
+- Dans le fichier *index.php*, créé une boucle permettant d'effectuer un combat à mort ! Tant qu'un des deux ennemis a une vie > 0, le combat continue donc.
+Remarque : la vie d'un combattant ne peut pas tomber en dessous de zéro, vérifie cela au moment où tu modifies la propriété *life*;
+
+ À chaque "round" 🕛, Heracles attaque le lion, puis le lion attaque Heracles. Tu dois afficher le numéro du round, qui attaque qui, et les points de vie restant. Une fois l'un des deux vaincus, tu dois alors afficher le vainqueur 🏆 et le perdant 💀. La capture d'écran ci-dessous te résume ce qui est attendu. 
+
 
 ![instructions](instructions.png)
 
