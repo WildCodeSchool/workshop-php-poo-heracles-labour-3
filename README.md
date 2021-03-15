@@ -11,8 +11,7 @@ Heraclès doit vaincre le féroce lion de Némée, connu pour sa peau impénétr
     - MAX_LIFE = 100 : les combattants ont 100 points de vie max
 
     les propriétés
-    - name : le nom du combattant
-    - icon : une icone pour le représenter (https://emojipedia.org/) : pour l'instant tu vas travailler dans le terminal uniquement, les emoticones permettent d'avoir un rendu un peu plus sympathique en attendant de travailler dans le navigateur (ça sera pour bientôt)
+    - name : le nom du combattant. 
     - strength : la force du combattant (permettra de calculer les points de dégats lors d'une attaque)
     - dexterity : la dextérité du combattant (permettra de calculer les points de défense qui viendront limiter les dégats reçus)
     - life : les points de vie du combattant (initialisé à MAX_LIFE, ainsi ils débutent tous avec 100 point de vie.)
@@ -20,9 +19,10 @@ Heraclès doit vaincre le féroce lion de Némée, connu pour sa peau impénétr
 Il y aurait potentiellement plein d'autres choses à ajouter mais pour un début c'est déjà pas mal !
 
 - Dans le fichier *index.php*, créer deux instances de la classe Fighter, pour :
-- Heracles 🧔, force de 20, dextérité de 6 
-- Lion de Némée 🦁 force de 11, dextérité de 13 
-(tu peux t'amuser à faire varier ses valeurs mais celles-ci te donneront des combats relativement équilibrés)
+- 🧔 Heracles , force de 20, dextérité de 6 
+- 🦁 Lion de Némée, force de 11, dextérité de 13 
+Pour avoir un rendu un peu plus sympathique en attendant de travailler dans le navigateur, tu pourras ajouter une icône dans la chaîne de caractère du nom (https://emojipedia.org/)
+Tu peux t'amuser à faire varier ses valeurs mais celles-ci te donneront des combats relativement équilibrés.
 
 HINT: un *constructeur* va être nécessaire dans ta classe pour initialiser ces propriétés avec des valeurs différentes pour Heracles et le Lion. 
 HINT2: n'oublie pas de faire un require de ton fichier *Fighter.php* si tu veux pouvoir l'utiliser depuis ton fichier *index.php*.

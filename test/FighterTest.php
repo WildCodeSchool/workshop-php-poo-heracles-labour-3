@@ -8,8 +8,8 @@ class FighterTest extends TestCase
 {
     public function testDamage()
     {
-        $fighter = new Fighter('hercules', '', 10, 5);
-        $attacked = new Fighter('lion', '', 10, 5);
+        $fighter = new Fighter('hercules', 10, 5);
+        $attacked = new Fighter('lion', 10, 5);
         $this->assertEquals($fighter->getStrength(), 10);
         $this->assertEquals($attacked->getDefense(), 5);
 

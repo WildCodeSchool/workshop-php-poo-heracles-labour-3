@@ -12,10 +12,9 @@ class Fighter
 
     private int $life = self::MAX_LIFE;
 
-    public function __construct(string $name, string $icon, int $strength = 10, int $dexterity = 5)
+    public function __construct(string $name, int $strength = 10, int $dexterity = 5)
     {
         $this->name = $name;
-        $this->icon = $icon;
         $this->strength = $strength;
         $this->dexterity = $dexterity;
     }
@@ -83,26 +82,6 @@ class Fighter
     public function isDead(): bool
     {
         return $this->getLife() <= 0;
-    }
-
-    /**
-     * Get the value of icon
-     */
-    public function getIcon()
-    {
-        return $this->icon;
-    }
-
-    /**
-     * Set the value of icon
-     *
-     * @return  self
-     */
-    public function setIcon($icon)
-    {
-        $this->icon = $icon;
-
-        return $this;
     }
 
     /**
