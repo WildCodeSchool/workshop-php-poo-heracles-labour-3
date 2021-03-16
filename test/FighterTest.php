@@ -6,62 +6,70 @@ use PHPUnit\Framework\TestCase;
 
 class FighterTest extends TestCase
 {
-    public function testDamage()
-    {
-        $fighter = new Fighter('hercules', 10, 5);
-        $attacked = new Fighter('lion', 10, 5);
-        $this->assertEquals($fighter->getStrength(), 10);
-        $this->assertEquals($attacked->getDefense(), 5);
+    private Fighter $hercules;
+    private Fighter $mockHercules;
+    private Fighter $lion;
 
-        $this->assertLessThanOrEqual(10, $fighter->getDamage());
-        $this->assertGreaterThanOrEqual(1, $fighter->getDamage());
+    public function setUp(): void
+    {
+        $this->hercules = new Fighter('hercules', 10, 5);
+        $this->lion = new Fighter('lion', 12, 5);
+        $this->mockHercules = $this->getMockBuilder(Fighter::class)
+            ->setMethods(['getDamage'])
+            ->setConstructorArgs(['Hercules', 10, 10])
+            ->getMock();
+
     }
     
-    public function testFight()
+    public function testDamage()
     {
-        $fighter = new Fighter('hercules', '', 10, 5);
-        $attacked = new Fighter('lion', '', 10, 5);
-        $fighter->fight($attacked);
+        $this->assertEquals($this->hercules->getStrength(), 10);
+        $this->assertEquals($this->lion->getDefense(), 5);
 
-        $this->assertLessThanOrEqual(100, $attacked->getLife());
-        $this->assertGreaterThanOrEqual(90, $attacked->getLife());
+        $this->assertLessThanOrEqual(10, $this->hercules->getDamage());
+        $this->assertGreaterThanOrEqual(1, $this->hercules->getDamage());
+
+        $this->assertLessThanOrEqual(12, $this->lion->getDamage());
+        $this->assertGreaterThanOrEqual(1, $this->lion->getDamage());
+    }
+    
+    public function testAttack()
+    {
+        $this->hercules->fight($this->lion);
+
+        $this->assertLessThanOrEqual(100, $this->lion->getLife());
+        $this->assertGreaterThanOrEqual(90, $this->lion->getLife());
+
+        $this->lion->fight($this->hercules);
+        $this->assertLessThanOrEqual(100, $this->lion->getLife());
+        $this->assertGreaterThanOrEqual(88, $this->lion->getLife());
     }    
 
-    public function testFightWithMock()
+    public function testMickFighterAttack()
     {
-        $attacked = new Fighter('lion', '', 10, 5);
-
         $fighterStub = $this->getMockBuilder(Fighter::class)
         ->setMethods(['getDamage'])
-        ->setConstructorArgs(['Hercules', '', 10, 10])
+        ->setConstructorArgs(['Hercules', 10, 10])
         ->getMock();
 
         $fighterStub->method('getDamage')->willReturn(8);
-        $fighterStub->fight($attacked);
+        $fighterStub->fight($this->lion);
         $this->assertSame(8, $fighterStub->getDamage());
-        $this->assertEquals(97, $attacked->getLife());
+        $this->assertEquals(97, $this->lion->getLife());
+    }
 
-        $fighterStub = $this->getMockBuilder(Fighter::class)
-        ->setMethods(['getDamage'])
-        ->setConstructorArgs(['Hercules', '', 10, 10])
-        ->getMock();
-        $fighterStub->method('getDamage')->willReturn(12);
-        $fighterStub->fight($attacked);
-        $this->assertSame(12, $fighterStub->getDamage());
-        $this->assertEquals(90, $attacked->getLife());
+    public function testAttackLesserThanDefense() {
+        $this->mockHercules->method('getDamage')->willReturn(3);
+        $this->mockHercules->fight($this->lion);
+        $this->assertSame(3, $this->mockHercules->getDamage());
+        $this->assertEquals(100, $this->lion->getLife());
     }
     
     public function testDeadWithMock()
     {
-        $attacked = new Fighter('lion', '', 10, 5);
-
-        $fighterStub = $this->getMockBuilder(Fighter::class)
-        ->setMethods(['getDamage'])
-        ->setConstructorArgs(['Hercules', '', 10, 10])
-        ->getMock();
-        $fighterStub->method('getDamage')->willReturn(120);
-        $fighterStub->fight($attacked);
-        $this->assertSame(120, $fighterStub->getDamage());
-        $this->assertEquals(0, $attacked->getLife());
+        $this->mockHercules->method('getDamage')->willReturn(120);
+        $this->mockHercules->fight($this->lion);
+        $this->assertSame(120, $this->mockHercules->getDamage());
+        $this->assertEquals(0, $this->lion->getLife());
     }
 }

@@ -27,7 +27,7 @@ Tu peux t'amuser à faire varier ses valeurs mais celles-ci te donneront des com
 HINT: un *constructeur* va être nécessaire dans ta classe pour initialiser ces propriétés avec des valeurs différentes pour Heracles et le Lion. 
 HINT2: n'oublie pas de faire un require de ton fichier *Fighter.php* si tu veux pouvoir l'utiliser depuis ton fichier *index.php*.
 
-Une fois les deux objets instanciés, affiche le nom, l'icone et la vie 💙 (tu dois avoir 100 au départ) de chacun des deux combattants pour t'assurer que tout fonctionne bien. Pour afficher ton code, tu vas utiliser PHP uniquement en mode CLI (pas besoin de lancer de serveur PHP).
+Une fois les deux objets instanciés, affiche le nom et la vie 💙 (tu dois avoir 100 au départ) de chacun des deux combattants pour t'assurer que tout fonctionne bien. Pour afficher ton code, tu vas utiliser PHP uniquement en mode CLI (pas besoin de lancer de serveur PHP).
 Pour se faire tape juste : `php index.php` dans ton terminal.
 
 

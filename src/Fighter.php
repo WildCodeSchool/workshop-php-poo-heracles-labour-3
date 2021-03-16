@@ -5,7 +5,6 @@ class Fighter
     public const MAX_LIFE = 100;
 
     private string $name;
-    private string $icon;
 
     private int $strength;
     private int $dexterity;
