@@ -10,11 +10,11 @@ require '../src/Shield.php';
 $weapon = new Weapon();
 $shield = new Shield();
 
-$hercules = new Fighter('Hercules', 20, 6);
+$hercules = new Fighter('Hercules', 20, 6, 'hercules.svg');
 $hercules->setWeapon($weapon);
-// $hercules->setShield($shield);
+$hercules->setShield($shield);
 
-$boar = new Fighter('Erymanthian Boar', 22, 10);
+$boar = new Fighter('Erymanthian Boar', 25, 12, 'boar.svg');
 
 $i = 1;
 ?>
@@ -32,16 +32,18 @@ $i = 1;
 
 <body>
     <header>
-        <h1>Hercules vs Erymanthian Boar</h1> 
+        <h1>Hercules vs Erymanthian Boar</h1>
     </header>
-    <a href="#hero">Inventory</a>
     <main>
 
         <div class="fighters">
-            <figure class="hercules">
-                <img src="<?=  $hercules->getImage() ?>" alt="hercules">
-                <figcaption><?= $hercules->getName() ?></figcaption>
-            </figure>
+            <a href="#hero">
+                <figure class="hercules">
+                    <img src="<?= $hercules->getImage() ?>" alt="hercules">
+                    <figcaption><?= $hercules->getName() ?></figcaption>
+                </figure>
+            </a>
+            <div class="fight">🗡️</div>
             <figure class="monster">
                 <img src="<?= $boar->getImage() ?>" alt="monster">
                 <figcaption><?= $boar->getName() ?></figcaption>
@@ -51,27 +53,14 @@ $i = 1;
         <?php
         while ($hercules->isAlive() && $boar->isAlive()) : ?>
             <section class="round">
-                <h2 class="number">🕛 Round <?= $i ?></h2>
-                <div class="fight">
-
-                    <?php $hercules->fight($boar); ?>
-                    <div>
-                        <?= $hercules->getName() . ' 🗡️  ' . $boar->getName() ?>
-                    </div>
-                    <div class="life">
-                        💙
-                        <progress max="<?= Fighter::MAX_LIFE ?>" value="<?= $hercules->getLife() ?>"></progress>
-                        <progress max="<?= Fighter::MAX_LIFE ?>" value="<?= $boar->getLife() ?>"></progress>
-                    </div>
-                    <?php $boar->fight($hercules); ?>
-                    <div>
-                        <?= $hercules->getName() . ' 🗡️  ' . $boar->getName() ?>
-                    </div>
-                    <div class="life">
-                        💙
-                        <progress max="<?= Fighter::MAX_LIFE ?>" value="<?= $hercules->getLife() ?>"></progress>
-                        <progress max="<?= Fighter::MAX_LIFE ?>" value="<?= $boar->getLife() ?>"></progress>
-                    </div>
+                <h2 class="number">Round <?= $i ?></h2>
+                <?php $hercules->fight($boar); ?>
+                <?php $boar->fight($hercules); ?>
+                <div class="life">
+                    <div><?= $hercules->getLife() ?></div>
+                    <progress max="<?= Fighter::MAX_LIFE ?>" value="<?= $hercules->getLife() ?>"></progress>
+                    <progress max="<?= Fighter::MAX_LIFE ?>" value="<?= $boar->getLife() ?>"></progress>
+                    <div><?= $boar->getLife() ?></div>
                 </div>
                 <?php $i++; ?>
             </section>

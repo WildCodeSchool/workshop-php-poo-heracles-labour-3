@@ -27,7 +27,7 @@
     <div class="character">
         <h2 class="name"><?= $hercules->getName() ?></h2>
         <div class="avatar">
-            <?php include $hercules->render(); ?>
+            <?php include $hercules->getImage(); ?>
         </div>
         <p class="level">Level 1</p>
     </div>

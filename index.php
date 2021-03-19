@@ -7,7 +7,7 @@ $lion = new Fighter('🦁 Lion de Némée', 11, 13);
 
 $i = 1;
 
-while ($hercules->isDead() === false && $lion->isDead() === false) {
+while ($hercules->isAlive() && $lion->isAlive()) {
     echo '🕛 Round #' . $i . PHP_EOL;
 
     $hercules->fight($lion);
@@ -19,7 +19,7 @@ while ($hercules->isDead() === false && $lion->isDead() === false) {
     $i++;
 }
 
-if ($hercules->isDead()) {
+if (!$hercules->isAlive()) {
     $winner = $lion;
     $loser = $hercules;
 } else {
