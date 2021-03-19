@@ -4,19 +4,14 @@ use App\Shield;
 use App\Weapon;
 
 require '../src/Fighter.php';
-require '../src/Weapon.php';
-require '../src/Shield.php';
 
-$weapon = new Weapon();
-$shield = new Shield();
+/** DEBUT DE LA ZONE A MODIFIER **/
 
-$hercules = new Fighter('Hercules', 20, 6, 'hercules.svg');
-$hercules->setWeapon($weapon);
-$hercules->setShield($shield);
+$hercules = new Fighter('Hercules', 20, 6);
+$boar = new Fighter('Erymanthian Boar', 25, 12);
 
-$boar = new Fighter('Erymanthian Boar', 25, 12, 'boar.svg');
+/** FIN DE LA ZONE A MODIFIER **/
 
-$i = 1;
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +46,8 @@ $i = 1;
         </div>
 
         <?php
+        $i = 1;
+
         while ($hercules->isAlive() && $boar->isAlive()) : ?>
             <section class="round">
                 <h2 class="number">Round <?= $i ?></h2>

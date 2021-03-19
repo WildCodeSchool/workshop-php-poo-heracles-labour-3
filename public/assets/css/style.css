@@ -90,6 +90,7 @@ a:any-link {
 .fighters .fight {
     font-size: 64px;
 }
+
 .fighters figcaption{
     position: absolute;
     bottom: 20%;
@@ -138,9 +139,10 @@ a:any-link {
 .life {
     display:flex;
 }
-.life > div {
-    padding: 0 var(--spacing);
+.life div, .life progress {
+    margin:  var(--spacing);
 }
+
 /** inventory **/
 .hero {
     display: none;

@@ -47,9 +47,6 @@ class Fighter
     public function getDamage(): int
     {
         $damage = $this->getStrength();
-        if($this->getWeapon() !== null) {
-            $damage += $this->getWeapon()->getDamage();
-        }
         return $damage;
     }
 
@@ -65,9 +62,6 @@ class Fighter
     public function getDefense(): int
     {
         $defense = $this->getDexterity();
-        if($this->getShield() !== null) {
-            $defense += $this->getShield()->getProtection();
-        }
 
         return $defense;
     }
