@@ -6,13 +6,13 @@
     </a>
     <div class="slots equipment">
         <div data-slot="Main weapon" class="slot">
-            <?php if ($hercules->getWeapon() instanceof App\Weapon) :
-                include $hercules->getWeapon()->render();
+            <?php if (method_exists($heracles, 'getWeapon') && $heracles->getWeapon() !== null) :
+                include $heracles->getWeapon()->render();
             endif; ?>
         </div>
         <div data-slot="Shield" class="slot">
-            <?php if ($hercules->getShield() instanceof App\Shield) :
-                include $hercules->getShield()->render();
+            <?php if (method_exists($heracles, 'getShield') && $heracles->getShield() !== null) :
+                include $heracles->getShield()->render();
             endif; ?>
         </div>
         <div data-slot="Secondary weapon" class="slot"></div>
@@ -20,21 +20,23 @@
         <div data-slot="Ring" class="slot"></div>
         <div data-slot="Armory" class="slot"></div>
         <div data-slot="Attack" class="slot statistic">
-            <? if (method_exists($hercules, 'getDamage')) : ?>
-            <?= $hercules->getDamage() ?>
-            <? endif ?>
+            <?php if (method_exists($heracles, 'getDamage')) {
+                echo $heracles->getDamage();
+            } ?>
         </div>
         <div data-slot="Defense" class="slot statistic">
-        <? if (method_exists($hercules, 'getDefense')) : ?>
-            <?= $hercules->getDefense() ?>
-            <? endif ?>        </div>
-        <div data-slot="Life" class="slot statistic"><?= $hercules->getLife() ?></div>
+            <?php if (method_exists($heracles, 'getDefense')) {
+                echo $heracles->getDefense();
+            }  ?>
+
+        </div>
+        <div data-slot="Life" class="slot statistic"><?= $heracles->getLife() ?></div>
         <div data-slot="Magic" class="slot statistic"></div>
     </div>
     <div class="character">
-        <h2 class="name"><?= $hercules->getName() ?></h2>
+        <h2 class="name"><?= $heracles->getName() ?></h2>
         <div class="avatar">
-            <?php include $hercules->getImage(); ?>
+            <?php include $heracles->getImage(); ?>
         </div>
         <p class="level">Level 1</p>
     </div>

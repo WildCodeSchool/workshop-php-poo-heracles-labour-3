@@ -15,9 +15,6 @@ class Fighter
 
     private int $life = self::MAX_LIFE;
     
-    private ?Weapon $weapon = null;
-    private ?Shield $shield = null;
-
     public function __construct(string $name, int $strength = 10, int $dexterity = 5, string $image = 'fighter.svg')
     {
         $this->name = $name;
@@ -48,19 +45,13 @@ class Fighter
 
     public function fight(Fighter $adversary): void
     {
-        $damage = rand(1, $this->getStrength()) - $adversary->getDefense();
+        $damage = rand(1, $this->getStrength()) - $adversary->getDexterity();
         if ($damage < 0) {
             $damage = 0;
         }
         $adversary->setLife($adversary->getLife() - $damage);
     }
 
-    public function getDefense(): int
-    {
-        $defense = $this->getDexterity();
-
-        return $defense;
-    }
 
     /**
      * Get the value of life
@@ -127,46 +118,6 @@ class Fighter
     public function setDexterity($dexterity)
     {
         $this->dexterity = $dexterity;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of weapon
-     */ 
-    public function getWeapon()
-    {
-        return $this->weapon;
-    }
-
-    /**
-     * Set the value of weapon
-     *
-     * @return  self
-     */ 
-    public function setWeapon($weapon)
-    {
-        $this->weapon = $weapon;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of shield
-     */ 
-    public function getShield()
-    {
-        return $this->shield;
-    }
-
-    /**
-     * Set the value of shield
-     *
-     * @return  self
-     */ 
-    public function setShield($shield)
-    {
-        $this->shield = $shield;
 
         return $this;
     }

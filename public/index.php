@@ -7,7 +7,7 @@ require '../src/Fighter.php';
 
 /** DEBUT DE LA ZONE A MODIFIER **/
 
-$hercules = new Fighter('Hercules', 20, 6);
+$heracles = new Fighter('Heracles', 20, 6);
 $boar = new Fighter('Erymanthian Boar', 25, 12);
 
 /** FIN DE LA ZONE A MODIFIER **/
@@ -21,21 +21,21 @@ $boar = new Fighter('Erymanthian Boar', 25, 12);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hercules Labours</title>
+    <title>Heracles Labours</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
     <header>
-        <h1>Hercules vs Erymanthian Boar</h1>
+        <h1>Heracles vs Erymanthian Boar</h1>
     </header>
     <main>
 
         <div class="fighters">
             <a href="#hero">
-                <figure class="hercules">
-                    <img src="<?= $hercules->getImage() ?>" alt="hercules">
-                    <figcaption><?= $hercules->getName() ?></figcaption>
+                <figure class="heracles">
+                    <img src="<?= $heracles->getImage() ?>" alt="heracles">
+                    <figcaption><?= $heracles->getName() ?></figcaption>
                 </figure>
             </a>
             <div class="fight">🗡️</div>
@@ -48,14 +48,14 @@ $boar = new Fighter('Erymanthian Boar', 25, 12);
         <?php
         $i = 1;
 
-        while ($hercules->isAlive() && $boar->isAlive()) : ?>
+        while ($heracles->isAlive() && $boar->isAlive()) : ?>
             <section class="round">
                 <h2 class="number">Round <?= $i ?></h2>
-                <?php $hercules->fight($boar); ?>
-                <?php $boar->fight($hercules); ?>
+                <?php $heracles->fight($boar); ?>
+                <?php $boar->fight($heracles); ?>
                 <div class="life">
-                    <div><?= $hercules->getLife() ?></div>
-                    <progress max="<?= Fighter::MAX_LIFE ?>" value="<?= $hercules->getLife() ?>"></progress>
+                    <div><?= $heracles->getLife() ?></div>
+                    <progress max="<?= Fighter::MAX_LIFE ?>" value="<?= $heracles->getLife() ?>"></progress>
                     <progress max="<?= Fighter::MAX_LIFE ?>" value="<?= $boar->getLife() ?>"></progress>
                     <div><?= $boar->getLife() ?></div>
                 </div>
@@ -64,11 +64,11 @@ $boar = new Fighter('Erymanthian Boar', 25, 12);
         <?php endwhile; ?>
 
         <?php
-        if (!$hercules->isAlive()) {
+        if (!$heracles->isAlive()) {
             $winner = $boar;
-            $loser = $hercules;
+            $loser = $heracles;
         } else {
-            $winner = $hercules;
+            $winner = $heracles;
             $loser = $boar;
         }
         ?>
@@ -78,7 +78,7 @@ $boar = new Fighter('Erymanthian Boar', 25, 12);
         </section>
     </main>
 
-    <?php include 'hero.php' ?>
+    <?php include 'inventory.php' ?>
 </body>
 
 </html>

@@ -20,7 +20,7 @@ Dans le fichier *Fighter.php*, une petite modification a également été apport
 Quand tu ouvres http://localhost:8000 sur ton navigateur, tu dois voir deux images pour les fighters, ainsi que le déroulé du combat. Le code repris sur cette page est très proche de celui du *cli.php*, à quelques ajustement de mise en forme près. Tu vois ici que le code des ta classe s'adapte parfaitement à des utilisations différentes (terminal ou page web).
 
 Attribue une image aux deux protagoniste en ajoutant le lien vers l'image à l'instanciation des objets.
-Utilise respectivement les images *hercules.svg* et *boar.svg* déjà fournies.
+Utilise respectivement les images *heracles.svg* et *boar.svg* déjà fournies.
 
 Les images devraient s'actualiser en conséquence dans ton navigateur puisque la page *index.php* appelle la méthode `getImage()` qui, comme tu peux le voir dans la classe Fighter, renvoie le nom de l'image auquel elle ajoute le chemin vers le répertoire 'assets/images' afin que ton navigateur puisse retrouver correctement celle-ci.
 
@@ -32,7 +32,7 @@ Si tu cliques sur l'image d'Heracles, tu verras qu'une fenêtre modale s'ouvre. 
 Il va falloir t'ajouter une épée. Créé une nouvelle classe que tu appeleras Weapon.php dans le dossier *src/*.
 Cette classe Weapon va correspondre à l'arme que tu vas équiper. Elle doit avoir une propriété `$damage`, de type integer, et initialisée à 10. Ajouter une propriété image initialisé avec 'sword.svg'. Créé également les getter et setter correspondants. Pour le `getImage()`, comme pour Fighter, fait en sorte de concatener avec 'assets/images/' pour renvoyer le chemin complet vers l'image. 
 
-Pour ajouter l'arme au personnage, dans la classe Fighter, ajouter une propriété `$weapon`. Celle-ci sera cette fois de type 'Weapon', c'est-à-dire que la valeur assignée à cette propriété devra être un objet, instace de la class Weapon. Pour rappel, tu peux utilise n'importe quelle classe en tant que "type". 
+Pour ajouter l'arme au personnage, dans la classe Fighter, ajouter une propriété `$weapon`. Celle-ci sera cette fois-ci typé avec  `?Weapon`, c'est-à-dire que la valeur assignée à cette propriété devra être un objet, instance de la class Weapon ou `null`. Par défaut, la propriété sera initialisé à `null`. Pour rappel, tu peux utilise n'importe quelle classe en tant que "type". 
 Créé la encore le getter et setter correspondant.
 
 Dans le fichier *index.php*, instancie un objet de type Weapon et associe le à Heracles via la méthode `setWeapon()`. Si tout se passe bien, tu dois voir l'arme apparaître dans l'inventaire du héros, dans la case "Weapon", la première en haut à gauche.
@@ -46,7 +46,7 @@ Vérifie dans ton inventaire, ton score d'attaque doit être modifié pour affic
 ## Et la défense dans tout ça ? 
 Tu vas refaire quasiment la même chose pour gérer un bouclier.
 - Créé une classe Shield avec un propriété $protection à 10, et une propriété image utilisant 'shield.svg'.
-- Dans Fighter, créé une classe getDefense(), additionnant dexterité et la protection du bouclier (si le héros en porte un). Cette méthode sera également utilisée dans fight() (à la place du simple appel à getDexterity()) afin que le bouclier puisse jouer son rôle protecteur. 
+- Dans Fighter, créé une propriété $shield de type `?Shield`. Puis créé une méthode `getDefense()`, additionnant dexterité et la protection du bouclier (si le héros en porte un). Cette méthode sera également utilisée dans `fight()` (à la place du simple appel à `getDexterity()`) afin que le bouclier puisse jouer son rôle protecteur. 
 - Vérifie dans l'inventaire que le bouclier apparaît bien dans la seconde case et que le score de défense du personnage a bien été modifié.
 
 ## Prêt au combat.
