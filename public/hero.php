@@ -19,8 +19,15 @@
         <div data-slot="Head" class="slot"></div>
         <div data-slot="Ring" class="slot"></div>
         <div data-slot="Armory" class="slot"></div>
-        <div data-slot="Attack" class="slot statistic"><?= $hercules->getDamage() ?></div>
-        <div data-slot="Defense" class="slot statistic"><?= $hercules->getDefense() ?></div>
+        <div data-slot="Attack" class="slot statistic">
+            <? if (method_exists($hercules, 'getDamage')) : ?>
+            <?= $hercules->getDamage() ?>
+            <? endif ?>
+        </div>
+        <div data-slot="Defense" class="slot statistic">
+        <? if (method_exists($hercules, 'getDefense')) : ?>
+            <?= $hercules->getDefense() ?>
+            <? endif ?>        </div>
         <div data-slot="Life" class="slot statistic"><?= $hercules->getLife() ?></div>
         <div data-slot="Magic" class="slot statistic"></div>
     </div>

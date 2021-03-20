@@ -44,15 +44,11 @@ class Fighter
         $this->image = $image;
     }
 
-    public function getDamage(): int
-    {
-        $damage = $this->getStrength();
-        return $damage;
-    }
+
 
     public function fight(Fighter $adversary): void
     {
-        $damage = rand(1, $this->getDamage()) - $adversary->getDefense();
+        $damage = rand(1, $this->getStrength()) - $adversary->getDefense();
         if ($damage < 0) {
             $damage = 0;
         }
