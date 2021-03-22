@@ -15,8 +15,12 @@ class Fighter
 
     private int $life = self::MAX_LIFE;
     
-    public function __construct(string $name, int $strength = 10, int $dexterity = 5, string $image = 'fighter.svg')
-    {
+    public function __construct(
+        string $name,
+        int $strength = 10,
+        int $dexterity = 5,
+        string $image = 'fighter.svg'
+    ) {
         $this->name = $name;
         $this->strength = $strength;
         $this->dexterity = $dexterity;
