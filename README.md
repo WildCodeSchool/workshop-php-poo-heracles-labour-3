@@ -7,7 +7,7 @@ Prérequis : cloner ce repository.
 Heraclès doit maintenant vaincre le sanglier d'Érymanthe 🐗, énorme bête qui terrifie les habitants du mont Érymanthe en Arcadie.
 
 Dans ce nouvel atelier, tu as une structure de projet un peu plus complexe que précédemment. 
-Tout d'abord, tu vas retrouver un fichier *cli.php* à la racine du projet. C'est une correction de l'atelier précédent. Le fichier a été renommé en pour éviter les confusions avec le nouveau fichier *index.php* qui se trouve maintenant dans le dossier *public*. 
+Tout d'abord, tu vas retrouver un fichier *cli.php* à la racine du projet. C'est une correction de l'atelier précédent. Le fichier a été renommé pour éviter les confusions avec le nouveau fichier *index.php* qui se trouve maintenant dans le dossier *public*. 
 
 Tu vas en effet utiliser cette fois-ci une interface web, tu devras donc lancer un serveur PHP sur le dossier public en utilisant la commande
 
