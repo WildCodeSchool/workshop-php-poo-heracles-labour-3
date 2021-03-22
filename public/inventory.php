@@ -7,12 +7,12 @@
     <div class="slots equipment">
         <div data-slot="Main weapon" class="slot">
             <?php if (method_exists($heracles, 'getWeapon') && $heracles->getWeapon() !== null) :
-                include $heracles->getWeapon()->render();
+                include $heracles->getWeapon()->getImage();
             endif; ?>
         </div>
         <div data-slot="Shield" class="slot">
             <?php if (method_exists($heracles, 'getShield') && $heracles->getShield() !== null) :
-                include $heracles->getShield()->render();
+                include $heracles->getShield()->getImage();
             endif; ?>
         </div>
         <div data-slot="Secondary weapon" class="slot"></div>
