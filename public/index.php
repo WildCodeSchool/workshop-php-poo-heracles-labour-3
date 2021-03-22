@@ -1,8 +1,5 @@
 <?php
 
-use App\Shield;
-use App\Weapon;
-
 require '../src/Fighter.php';
 
 /** ✅ DEBUT DE LA ZONE À MODIFIER ✅ **/
@@ -10,7 +7,6 @@ require '../src/Fighter.php';
 
 $heracles = new Fighter('Heracles', 20, 6);
 $boar = new Fighter('Erymanthian Boar', 25, 12);
-
 
 /** FIN DE LA ZONE A MODIFIER **/
 /** ⛔ Ne pas modifier en dessous ⛔ **/

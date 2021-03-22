@@ -46,7 +46,7 @@ Tout d'abord, il va falloir t'ajouter une épée.
 1. Créé une nouvelle classe `Weapon` dans le dossier *src/*.
 2. Celle-ci va correspondre à l'arme que tu vas équiper. Elle doit avoir une propriété `$damage`, de type integer, et initialisée à 10.
 3. Ajoute une propriété image initialisé avec 'sword.svg'. 
-4. Créé également les *getter* et *setter* correspondants. Pour le `getImage()` (comme pour `Fighter`), fait en sorte de concatener la chaîne retournée avec 'assets/images/' pour renvoyer le chemin complet vers l'image.
+4. Créé également le *getter* et *setter* correspondant, `getImage()` et `setImage()`. Pour le `getImage()` (comme pour `Fighter`), fait en sorte de concatener la chaîne retournée avec 'assets/images/' pour renvoyer le chemin complet vers l'image.
 
 5. Pour ajouter l'arme au personnage, dans la classe `Fighter`, créé une propriété `$weapon`. Celle-ci sera cette fois-ci typée avec  `?Weapon`, c'est-à-dire que la valeur assignée à cette propriété devra être un objet, instance de la class `Weapon`, ou `null` (c'est à cela que sert le point d'interrogation). Par défaut, la propriété sera initialisée à `null`. 
 

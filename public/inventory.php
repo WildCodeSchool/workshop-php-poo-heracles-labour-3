@@ -6,14 +6,14 @@
     </a>
     <div class="slots equipment">
         <div data-slot="Main weapon" class="slot">
-            <?php if (method_exists($heracles, 'getWeapon') && $heracles->getWeapon() !== null) :
-                include $heracles->getWeapon()->getImage();
-            endif; ?>
+            <?php if (method_exists($heracles, 'getWeapon') && $heracles->getWeapon() !== null) : ?>
+                <img src="<?= $heracles->getWeapon()->getImage() ?>" alt="weapon">
+            <?php endif; ?>
         </div>
         <div data-slot="Shield" class="slot">
-            <?php if (method_exists($heracles, 'getShield') && $heracles->getShield() !== null) :
-                include $heracles->getShield()->getImage();
-            endif; ?>
+            <?php if (method_exists($heracles, 'getShield') && $heracles->getShield() !== null) : ?>
+                <img src="<?= $heracles->getShield()->getImage() ?>" alt="shield">
+            <?php endif; ?>
         </div>
         <div data-slot="Secondary weapon" class="slot"></div>
         <div data-slot="Head" class="slot"></div>
@@ -36,7 +36,7 @@
     <div class="character">
         <h2 class="name"><?= $heracles->getName() ?></h2>
         <div class="avatar">
-            <?php include $heracles->getImage(); ?>
+            <img src="<?= $heracles->getImage() ?>" alt="heracles">
         </div>
         <p class="level">Level 1</p>
     </div>

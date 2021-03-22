@@ -1,8 +1,5 @@
 <?php
 
-use App\Shield;
-use App\Weapon;
-
 class Fighter
 {
     public const MAX_LIFE = 100;
