@@ -238,7 +238,7 @@ a:any-link {
     grid-row: span 2;
 }
 
-.slot:hover svg {
+.slot:hover img {
     scale:1.02;
     transition: 0.3s ease-in-out;
     filter:brightness(125%);
