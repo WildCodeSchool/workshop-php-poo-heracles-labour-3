@@ -6,7 +6,6 @@ require '../src/Shield.php';
 
 /** ✅ DEBUT DE LA ZONE À MODIFIER ✅ **/
 
-
 $heracles = new Fighter('Heracles', 20, 6, 'heracles.svg');
 $boar = new Fighter('Erymanthian Boar', 25, 12, 'boar.svg');
 

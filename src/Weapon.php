@@ -9,40 +9,25 @@ class Weapon
     /**
      * Get the value of damage
      */ 
-    public function getDamage()
+    public function getDamage(): int
     {
         return $this->damage;
     }
 
     /**
      * Set the value of damage
-     *
-     * @return  self
      */ 
-    public function setDamage($damage)
+    public function setDamage($damage): void
     {
         $this->damage = $damage;
-
-        return $this;
     }
 
     /**
      * Get the value of image
      */ 
-    public function getImage()
+    public function getImage(): string
     {
         return 'assets/images/' . $this->image;
     }
 
-    /**
-     * Set the value of image
-     *
-     * @return  self
-     */ 
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
 }

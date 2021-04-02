@@ -30,19 +30,17 @@ class Fighter
     /**
      * Get the value of name
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
+    /**
+     * Get the value of image
+     */
     public function getImage(): string
     {
         return 'assets/images/' . $this->image;
-    }
-
-    public function setImage(string $image): void
-    {
-        $this->image = $image;
     }
 
     public function getDamage(): int
@@ -77,7 +75,7 @@ class Fighter
     /**
      * Get the value of life
      */
-    public function getLife()
+    public function getLife(): int
     {
         return $this->life;
     }
@@ -85,16 +83,13 @@ class Fighter
     /**
      * Set the value of life
      *
-     * @return  self
      */
-    public function setLife($life)
+    public function setLife(int $life)
     {
         if($life < 0) {
             $life = 0;
         }
         $this->life = $life;
-
-        return $this;
     }
 
     public function isAlive(): bool
@@ -105,7 +100,7 @@ class Fighter
     /**
      * Get the value of strength
      */
-    public function getStrength()
+    public function getStrength(): int
     {
         return $this->strength;
     }
@@ -114,19 +109,16 @@ class Fighter
     /**
      * Set the value of strength
      *
-     * @return  self
      */
-    public function setStrength($strength)
+    public function setStrength($strength): void
     {
         $this->strength = $strength;
-
-        return $this;
     }
 
     /**
      * Get the value of dexterity
      */
-    public function getDexterity()
+    public function getDexterity(): int
     {
         return $this->dexterity;
     }
@@ -134,13 +126,10 @@ class Fighter
     /**
      * Set the value of dexterity
      *
-     * @return  self
      */
-    public function setDexterity($dexterity)
+    public function setDexterity($dexterity): void
     {
         $this->dexterity = $dexterity;
-
-        return $this;
     }
 
     /**
@@ -154,13 +143,10 @@ class Fighter
     /**
      * Set the value of weapon
      *
-     * @return  self
      */ 
-    public function setWeapon(Weapon $weapon)
+    public function setWeapon(Weapon $weapon): void
     {
         $this->weapon = $weapon;
-
-        return $this;
     }
 
     /**
@@ -174,12 +160,9 @@ class Fighter
     /**
      * Set the value of shield
      *
-     * @return  self
      */ 
-    public function setShield(Shield $shield)
+    public function setShield(?Shield $shield): void
     {
         $this->shield = $shield;
-
-        return $this;
     }
 }
