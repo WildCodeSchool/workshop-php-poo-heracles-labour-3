@@ -1,84 +1,54 @@
-# Travaux d'Héraclès #2 : le sanglier d'Érymanthe
+# Travaux d'Héraclès #3 : les oiseaux du lac Stymphale
  
-Prérequis : cloner ce repository.
- 
-## État des lieux du projet
- 
-Héraclès doit maintenant vaincre le sanglier d'Érymanthe 🐗, énorme bête qui terrifie les habitants du mont Erymanthe en Arcadie.
- 
-Dans ce nouvel atelier, tu as une structure de projet un peu plus complexe que précédemment. 
+Prérequis : cloner ce *repository*.
 
-Tout d'abord, tu vas retrouver un fichier *cli.php* à la racine du projet. C'est une correction de l'atelier précédent. Le fichier a été renommé pour éviter les confusions avec le nouveau fichier *index.php* qui se trouve maintenant dans le dossier *public*. 
+Fais un `composer install`
 
-Tu vas en effet utiliser cette fois-ci une interface web, tu devras donc lancer un serveur PHP sur le dossier public en utilisant la commande
- 
-`php -S localhost:8000 -t public`
- 
-le fichier *public/index.php* contient déjà pas mal de code. La partie du fichier que tu dois toucher est délimitée par des commentaires (en haut du fichier). 
- 
-> ⛔ Tu ne dois pas toucher au reste du code (même si tu peux le regarder ;-)). Ne t'inquiète pas si tu ne comprends pas tout ce qui s'y passe, dis toi juste que c'est une utilisation des classes que tu crées, afin d'avoir un rendu graphique un peu plus attrayant que dans le terminal.
- 
-✅ Dans cette zone "autorisée" tu vois qu'il y a déjà deux instances d'objets Fighter, tu retrouves Héraclès ainsi que le sanglier (`$boar`).
- 
-Dans le fichier *Fighter.php*, une petite modification a également été apportée afin de gérer des images pour tes combattants. Un 4ème paramètre `$image` est ajouté au `__construct()`, avec une image par défaut si tu n'en renseigne pas à l'instanciation. 
- 
-Quand tu ouvres http://localhost:8000 sur ton navigateur, tu dois voir cette image par défaut pour les deux combattants, ainsi que le déroulé du combat. Le code repris sur cette page est très proche de celui du *cli.php*, à quelques ajustements de mise en forme près. Tu vois ici que le code de ta classe `Fighter` s'adapte parfaitement à des utilisations différentes (terminal ou page web).
- 
- 
-## À toi de jouer
- 
-Tout d'abord, attribue une image aux deux protagonistes en ajoutant le lien vers l'image à l'instanciation des objets.
-Utilise respectivement les images *heracles.svg* et *boar.svg* déjà fournies, ce qui donne par ex :
- 
-```
-$heracles = new Fighter('Heracles', 20, 6, 'heracles.svg');
-```
- 
-Les images devraient s'actualiser en conséquence dans ton navigateur puisque la page *index.php* appelle la méthode `getImage()` qui, comme tu peux le voir dans la classe `Fighter`, renvoie le nom de l'image auquel elle ajoute le chemin vers le répertoire 'assets/images' afin que ton navigateur puisse retrouver correctement celle-ci.
- 
-## Un peu d'équipement pour attaquer
- 
-Les caractéristiques de force et de dextérité du sanglier sont bien supérieures aux tiennes, impossible de le battre dans ces conditions, tes poings ne suffiront pas ! Il va falloir que tu t'équipes en conséquences ! 
- 
-Si tu cliques sur l'image d'Héraclès, tu verras qu'une fenêtre modale s'ouvre. Mis à part ton image et ton nom, cette dernière est bien vide pour le moment, mais affichera à terme ton équipement et tes caractéristiques (attaque, défense, vie...)
- 
-Tout d'abord, il va falloir t'ajouter une épée.
- 
-1. Créé une nouvelle classe `Weapon` dans le dossier *src/*.
-2. Celle-ci va correspondre à l'arme que tu vas équiper. Elle doit avoir une propriété `$damage`, de type integer, et initialisée à 10.
-3. Ajoute une propriété image initialisé avec 'sword.svg'. 
+> Tu remarqueras que les fichiers *composer.json* et *composer.lock* sont déjà présents, et que l'*autoload* est configuré dans *composer.json*. Ainsi, dans *index.php*, les `require` multiples des classes ont été remplacés par un unique `require` de *vendor/autoload.php*. Des *namespaces* ont également été ajoutés sur les classes puisqu'ils servent pour l'*autoload*. 
 
-4. Créé également les *getter* et *setter* correspondants. Pour le `getImage()` (comme pour `Fighter`), fait en sorte de concaténer la chaîne retournée avec 'assets/images/' pour renvoyer le chemin complet vers l'image.
- 
-5. Pour ajouter l'arme au personnage, dans la classe `Fighter`, on crée une propriété `$weapon`. Celle-ci sera cette fois-ci typée avec  `?Weapon`, c'est-à-dire que la valeur assignée à cette propriété devra être un objet, instance de la classe `Weapon`, ou `null` (c'est à cela que sert le point d'interrogation). Par défaut, la propriété sera initialisée à `null`. 
+## Heritage
 
-6. Créé là encore le *getter* et *setter* correspondant à cette nouvelle propriété.
- 
-7. Dans le fichier *index.php*, instancie un objet de type `Weapon` et associe le à Héraclès via la méthode `setWeapon()`. Si tout se passe bien, tu dois voir l'arme apparaître dans l'inventaire du héros, dans la case "Weapon", la première en haut à gauche.
- 
-8. Pour le moment, l'épée apparaît bien mais elle ne t'apporte aucun avantage. Retourne dans `Fighter`, nous allons modifier un peu le comportement de la méthode `fight()`.
-Créé tout d'abord une méthode `getDamage()`. Celle-ci doit retourner la force (*strength*) du Fighter, à laquelle tu vas ajouter les dommages provenant de l'arme (dans le cas où il en porte une).
- 
-9. Dans la méthode `fight()`, remplace ensuite `getStrength()` par `getDamage()`. Ainsi les dégâts infligés (via le `rand()`) seront compris entre 1 et `getDamage()` (la force + les dégâts de l'arme) et non plus juste la force. 
- 
-> Tout ce calcul pourrait être réalisé directement dans `fight()`, mais l'utilisation de la méthode `getDamage()` permet de simplifier la méthode `fight()` et de déporter la logique de calcul des dommages ailleurs. De plus, il est maintenant possible d'utiliser `getDamage()` indépendamment de `fight()`, ce qui est fait pour afficher le score d'attaque dans l'inventaire.
- 
-10. Vérifie donc dans ton inventaire que ton score d'attaque apparaît bien. Il doit afficher 30. (et si tu essaies d'enlever l'arme à Héraclès, il doit afficher 20). Si tu changes la valeur de `$damage` dans la classe `Fighter`, tu verras que ton score d'attaque sera également modifié en conséquence, puisque c'est `getDamage()` qui est utilisé ici pour afficher le score ! 
- 
- 
-## Et la défense dans tout ça ? 
- 
-Tu vas refaire quasiment la même chose pour gérer cette fois-ci un bouclier. Les étapes sont ici volontairement  données dans les grandes lignes.
- 
-- Créé une classe `Shield` avec un propriété `$protection` initialisée à 10, et une propriété image utilisant 'shield.svg'.
- 
-- Dans `Fighter`, ajouter une propriété `$shield`. Puis créé une méthode `getDefense()`, additionnant la dextérité et la protection du bouclier (si le héros en porte un). Cette méthode sera également utilisée dans `fight()` (à la place du simple appel à `getDexterity()`) afin que le bouclier puisse jouer son rôle protecteur. 
- 
-- Vérifie dans l'inventaire que le bouclier apparaît bien dans la seconde case et que le score de défense du personnage a bien été mis à jour.
- 
-## Prêt au combat.
- 
-Réactualise la page, tu fais maintenant beaucoup plus de dégâts et tu es mieux protégé, tu devrais gagner le combat sans trop de difficultés !
- 
-N'hésite pas à jouer avec ce code pour aller plus loin, une correction te sera fournie pour le prochain atelier.
+Un nouvelle épreuve attend notre champion, tuer les oiseaux monstrueux du lac Stymphale. Héraclès (et son équipement) ainsi que trois oiseaux sont déjà instanciés dans *index.php*.
 
+> Pour le moment, les monstres et les héros sont tous deux des instances de la classe `Fighter`. Cepandant, s'ils ont des propriétés communes propre aux combattants(name, life, dexterity, strength...) certaines caractéristiques diffèrent. Par exemple, seuls les Hero vont pouvoir porter de l'équipement (Shield, Weapon...).
+>
+> Il ne devrait donc pas être possible d'attribuer une épée à un sanglier, or c'est pour le moment possible. Pour régler ce problème de conception, il faut passer par l'héritage.
+
+- Créé deux classes `Hero` et `Monster`, chacune héritant de `Fighter`. Les propriétés communes aux deux vont rester dans Fighter, celles propres aux Hero (`Weapon` et `Shield`) vont passer avec leur *getters* et *setters* dans Hero. La classe `Monster` ne fait pour l'instant qu'étendre `Fighter` sans autre modification.
+- De plus, les méthodes `getDamage()` et `getProtection()` ont un comportement différent entre un monstre et héros. Dans le premier cas, seules la force et la dextérité sont prises en compte, dans le cas du héros, les valeurs retournées prennent aussi en compte les caractéristiques des armes et armures. Les méthodes `getDamage()` et `getProtection()` doivent donc exister dans `Fighter` pour refléter le cas le plus simple, et être réécrites dans `Hero` pour prendre en compte les équipement (ce qui correspond normalement au code actuel de `Fighter` à la fin de l'atelier précédent).
+
+- Dans *index.php*, modifier les instanciations pour prendre en compte ses nouvelles classes, `Hero` pour Héraclès et `Monster` pour les 3 *birds*.
+
+## Arène
+
+> Un autre changement de conception apparaît avec cette nouvelle épreuve. Ici, Héraclès ne se bat plus contre un unique monstre, mais contre une multitude. Pour l'instant, un Fighter n'a pas de méthode qui lui permette de connaître tous les autres Fighter du combat. Il serait possible de créer une propriété `$adversaries` dans `Fighter`, mais chaque Fighter devrait contenir tous les autres, ce qui serait assez redondant et ne permettrait pas d'avoir facilement une vue d'ensemble. 
+>
+> Une meilleure solution est de créer une nouvelle classe `Arena` qui contiendrait tous les `Fighter` ainsi que des méthodes pour les manipuler (les faire se combattre, les déplacer dans l'arène, etc.). De plus, cette arène peut servir de carte sur laquelle placer les `Fighter` et ajouter ainsi du positionnement au gameplay de notre jeu. 
+
+- Créé une class `Arena` contenant les propriétés `$monsters` (un tableau d'objets `Monster`) et `$hero` (un objet `Hero`). Par simplification, on partira du principe que nous avons forcément un unique héro dans une arène et un ou plusieurs monstres. 
+Ajouter les *getters* et *setters* comme d'habitude. Créé également un `__construct()` qui prendra en paramètre un héros et un tableau de monstres. Ajoute également une propriété `$size` (integer avec la valeur 10 par défaut) qui indiquera la taille de l'arène. 
+
+- On veut positionner des combattants dans l'arène: ajoute les propriétés `$x` et `$y` (+ *getters* / *setters*) dans `Fighter` se qui te permettra de donner une position aux combattants. 
+
+- Dans *index.php*, créé un objet de type `Arena` en lui passant `$heracles` et les trois *birds* que tu auras mis dans un tableau. Donne également des positions (x et y) à ces quater Fighters. Actualise : tu dois les voir sur une carte représentant ton arène et tes combattants dessus ! Modifies les coordonnées de chacun, ils doivent bouger en conséquence !
+
+## Garder ses distances
+
+> Maintenant que les combattants ont tous une position, essayons d'exploiter cette nouvelle information. Tout d'abord, il serait intéressant de connaître la distance entre le Hero et chacun des monstres.
+
+- Rappel : Pour calculer la distance entre deux points A et B sur une carte, cela revient à appliquer la formule suivante (qui n'est ni plus ni moins que le théorème de pythagore).
+
+![](https://wikimedia.org/api/rest_v1/media/math/render/png/b337eb9100bc60a3125751271848230ad2a0d447)
+
+HINT: en PHP, la racine carrée se calcule grace à la [fonction `sqrt()`](https://www.php.net/manual/fr/function.sqrt) et la puissance via l'[opérateur `**`](https://www.php.net/manual/fr/language.operators.arithmetic.php).
+
+Créer une méthode `getDistance()` dans Arena prenant 2 objets `Fighter` en paramètre, qui retournera la distance entre ces deux combattants. Une fois cela réalisé, réactualise. La distance devrait s'afficher sur la carte au survol d'un oiseau par la souris.
+
+- Maintenant que tu peux calculer un éloignement, ajoutant la notion de "portée" aux attaques. De base, un combattant sans arme ne devrait pas pouvoir frapper plus loin qu'un adversaire sur une case adjaçante (pas d'attaque diagonale). Ajoute la propriété `$range` (integer à 1 par défaut) et la méthode `getRange()`.
+
+- Ajoute une propriété `range` (également à 1 par défaut) sur les armes). Dans `Hero` uniquement, ajoute un `getRange()` qui aditionnera la portée de base du combattant à celle de l'arme qu'il porte. Ainsi Heracles avec une épée devrait avoir une portée de 2.
+
+- Dans `Arena`, créé une méthode `touchable()` prenant en 1er paramètre l'attaquant et en second l'attaqué. Cette méthode doit renvoyer `true` si l'attaqué est à portée de l'attaquant, c'est-à-dire si ça distance de l'attaquée est inférieure ou égale à la portée (range) de l'attaqué. Une fois cela fait, actualise. Tu devrais voir apparaître en couleur les oiseaux à portée d'Héraclès, et en grisé ceux qui ne le sont pas. N'hésite pas à modifier les coordonnées du héro pour faire varier les distances. 
+
+- Crée une nouvelle arme `$bow`, instance de Weapon, qui possède un range de 5, des dégâts à 8, et l'image 'bow.svg' (ajouter un `__construct` + des *getters* / *setters* serait sans doute une bonne idée). Attribue cette arme à Héraclès en remplacement de son actuelle épée. Actualise et vérifie dans l'inventaire que l'arme apparaît bien. 
+Sur la carte, tu devrais constaté que les oiseaux sont "atteignable" de plus loin puisque cette arme a un range() bien plus important.

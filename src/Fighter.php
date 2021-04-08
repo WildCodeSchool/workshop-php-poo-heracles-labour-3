@@ -1,5 +1,10 @@
 <?php
 
+namespace App;
+
+use App\Shield;
+use App\Weapon;
+
 class Fighter
 {
     public const MAX_LIFE = 100;
@@ -8,10 +13,10 @@ class Fighter
 
     private int $strength;
     private int $dexterity;
-    private string $image;
+    protected string $image = 'fighter.svg';
 
     private int $life = self::MAX_LIFE;
-    
+
     private ?Weapon $weapon = null;
     private ?Shield $shield = null;
 
@@ -27,131 +32,41 @@ class Fighter
         $this->image = $image;
     }
 
-    public function getWeapon(): ?Weapon 
-    {
-        return $this->weapon;
-    }
-
-    public function setWeapon(?Weapon $weapon): void
-    {
-        $this->weapon = $weapon;
-    }
-
-    /**
-     * Get the value of name
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    public function getImage(): string
-    {
-        return 'assets/images/' . $this->image;
-    }
-
-    public function setImage(string $image): void
-    {
-        $this->image = $image;
-    }
-
+    
     public function getDamage(): int
     {
         $damage = $this->getStrength();
-        if($this->getWeapon() instanceof Weapon) {
+        if($this->getWeapon() !== null) {
             $damage += $this->getWeapon()->getDamage();
         }
-
         return $damage;
     }
 
-    public function getDefense(): int 
+    public function getDefense(): int
     {
         $defense = $this->getDexterity();
-        if($this->getShield() instanceof Shield) {
-            $defense += $this->getShield()->getProtection();  
-        }
+        if ($this->getShield() !== null) {
+            $defense += $this->getShield()->getProtection();
+        }    
 
         return $defense;
     }
 
-    public function fight(Fighter $adversary): void
+     /**
+     * Get the value of weapon
+     */ 
+    public function getWeapon(): ?Weapon
     {
-        $damage = rand(1, $this->getDamage()) - $adversary->getDefense();
-        if ($damage < 0) {
-            $damage = 0;
-        }
-        $adversary->setLife($adversary->getLife() - $damage);
-    }
-
-
-    /**
-     * Get the value of life
-     */
-    public function getLife()
-    {
-        return $this->life;
+        return $this->weapon;
     }
 
     /**
-     * Set the value of life
+     * Set the value of weapon
      *
-     * @return  self
-     */
-    public function setLife($life)
+     */ 
+    public function setWeapon(Weapon $weapon): void
     {
-        if($life < 0) {
-            $life = 0;
-        }
-        $this->life = $life;
-
-        return $this;
-    }
-
-    public function isAlive(): bool
-    {
-        return $this->getLife() > 0;
-    }
-
-    /**
-     * Get the value of strength
-     */
-    public function getStrength()
-    {
-        return $this->strength;
-    }
-
-
-    /**
-     * Set the value of strength
-     *
-     * @return  self
-     */
-    public function setStrength($strength)
-    {
-        $this->strength = $strength;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of dexterity
-     */
-    public function getDexterity()
-    {
-        return $this->dexterity;
-    }
-
-    /**
-     * Set the value of dexterity
-     *
-     * @return  self
-     */
-    public function setDexterity($dexterity)
-    {
-        $this->dexterity = $dexterity;
-
-        return $this;
+        $this->weapon = $weapon;
     }
 
     /**
@@ -165,10 +80,94 @@ class Fighter
     /**
      * Set the value of shield
      *
-     * @return  self
      */ 
-    public function setShield(? Shield $shield): void
+    public function setShield(?Shield $shield): void
     {
         $this->shield = $shield;
+    }
+
+    /**
+     * Get the value of name
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * Get the value of image
+     */
+    public function getImage(): string
+    {
+        return 'assets/images/' . $this->image;
+    }
+
+
+    public function fight(Fighter $adversary): void
+    {
+        $damage = rand(1, $this->getDamage()) - $adversary->getDefense();
+        if ($damage < 0) {
+            $damage = 0;
+        }
+        $adversary->setLife($adversary->getLife() - $damage);
+    }
+
+    /**
+     * Get the value of life
+     */
+    public function getLife(): int
+    {
+        return $this->life;
+    }
+
+    /**
+     * Set the value of life
+     *
+     */
+    public function setLife(int $life)
+    {
+        if ($life < 0) {
+            $life = 0;
+        }
+        $this->life = $life;
+    }
+
+    public function isAlive(): bool
+    {
+        return $this->getLife() > 0;
+    }
+
+    /**
+     * Get the value of strength
+     */
+    public function getStrength(): int
+    {
+        return $this->strength;
+    }
+
+    /**
+     * Set the value of strength
+     *
+     */
+    public function setStrength($strength): void
+    {
+        $this->strength = $strength;
+    }
+
+    /**
+     * Get the value of dexterity
+     */
+    public function getDexterity(): int
+    {
+        return $this->dexterity;
+    }
+
+    /**
+     * Set the value of dexterity
+     *
+     */
+    public function setDexterity($dexterity): void
+    {
+        $this->dexterity = $dexterity;
     }
 }

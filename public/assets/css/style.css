@@ -6,7 +6,7 @@
     --ternary-color:#eca900;
     --dark:black;
     --light:white;
-    --transparent-light: #ffffffdd;
+    --transparent-light: #ffffffbb;
     --intermediate: grey;
 
     --spacing-sm: 4px;
@@ -46,7 +46,9 @@ main {
     flex-direction: column;
     align-items: center;
     width: var(--container-width);
+    min-height: 50vh;
     background-color: var(--transparent-light);
+    position: relative;
 }
 
 h1 {
@@ -70,21 +72,16 @@ a:any-link {
 
 /*** FIGHT **/
 
-.fighters {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom: var(--spacing-2);
-}
-
 .fighters figure {
-    --fighter-size:200px;
+    --fighter-size:150px;
     width: var(--fighter-size);
     height: var(--fighter-size);
     border: 4px solid var(--ternary-color);
     border-radius: 50%;
     overflow: hidden;
-    position: relative;
+    position: absolute;
+    left: var(--spacing);
+
 }
 
 .fighters .fight {
@@ -238,7 +235,7 @@ a:any-link {
     grid-row: span 2;
 }
 
-.slot:hover svg {
+.slot:hover img {
     scale:1.02;
     transition: 0.3s ease-in-out;
     filter:brightness(125%);
@@ -282,3 +279,70 @@ a:any-link {
 }
 
 
+/** MAP **/
+
+
+.map {
+    --size:70px;
+    --ground:rgb(119, 67, 8);
+    --map-inclination:70deg;
+    --map-rotation:45deg;
+    display: grid;
+    grid-template-columns: repeat(var(--tiles-number), var(--size));
+    grid-template-rows: repeat(var(--tiles-number), var(--size));
+    margin: var(--spacing-2);
+    transform: rotateX(var(--map-inclination)) rotateZ(var(--map-rotation));
+    transform-style: preserve-3d;
+    box-shadow: 4px 4px 0px 0px var(--ground), 8px 8px 0px 0px var(--ground), 12px 12px 0px 0px var(--ground),16px 16px 0px 0px var(--ground);
+}
+
+.map div {
+    background-image: url('../images/grass.png');
+    --grass: rgb(52, 112, 17);
+    transform-style: preserve-3d;
+    border:1px solid var(--grass);
+    transition: transform 0.3s ease-in-out;
+}
+
+.map div:hover {
+    transform: translateZ(2px);
+}
+
+.map div img {
+    --fighter-rotate:-90deg;
+    transform-origin: bottom;
+    transform: translateZ(var(--anim-z, 0)) translateY(calc(var(--size) / -2)) rotateX(var(--fighter-rotate)) ;
+    width: 100%;  
+
+}
+
+.map .touchable {
+    filter:brightness(110%);
+}
+
+.map .untouchable {
+    filter:grayscale(100) brightness(75%);
+    opacity: 0.8;
+}
+
+.monster {
+    animation: fly 2s infinite;
+}
+
+@keyframes fly {
+    0% { 
+        --anim-z:3px;
+    }
+    25% {
+        --anim-z:7px;
+    }   
+    50% { 
+        --anim-z:5px;
+    }
+    75% {
+        --anim-z:7px;
+    }
+    100% {
+        --anim-z:3px;
+    }
+}

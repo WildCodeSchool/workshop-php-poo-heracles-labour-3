@@ -1,32 +1,36 @@
-<?php
+<?php 
 
 namespace App;
 
-class Shield
+class Armory
 {
-    private int $protection = 10;
-    private string $image = 'shield.svg';
+    protected int $protection;
+    protected string $image;
 
     /**
      * Get the value of protection
      */ 
-    public function getProtection(): int
+    public function getProtection()
     {
         return $this->protection;
     }
 
     /**
      * Set the value of protection
+     *
+     * @return  self
      */ 
-    public function setProtection(int $protection): void
+    public function setProtection($protection)
     {
         $this->protection = $protection;
+
+        return $this;
     }
 
     /**
      * Get the value of image
      */ 
-    public function getImage(): string
+    public function getImage()
     {
         return 'assets/images/' . $this->image;
     }
@@ -34,9 +38,12 @@ class Shield
     /**
      * Set the value of image
      *
+     * @return  self
      */ 
-    public function setImage($image): void
+    public function setImage($image)
     {
         $this->image = $image;
+
+        return $this;
     }
 }
