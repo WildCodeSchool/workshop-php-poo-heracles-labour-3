@@ -16,7 +16,12 @@
             <?php endif; ?>
         </div>
         <div data-slot="Secondary weapon" class="slot"></div>
-        <div data-slot="Head" class="slot"></div>
+        <div data-slot="Head" class="slot">
+            <?php if (method_exists($heracles, 'getHelmet') && $heracles->getHelmet() !== null) : ?>
+                <img src="<?= $heracles->getHelmet()->getImage() ?>" alt="helmet">
+            <?php endif; ?>
+
+        </div>
         <div data-slot="Ring" class="slot"></div>
         <div data-slot="Armory" class="slot"></div>
         <div data-slot="Attack" class="slot statistic">

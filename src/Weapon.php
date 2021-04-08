@@ -1,10 +1,12 @@
 <?php
 
+namespace App;
+
 class Weapon
 {
-    private int $damage = 10;
+    protected int $damage = 10;
 
-    private string $image = 'sword.svg';
+    protected string $image = 'sword.svg';
 
     /**
      * Get the value of damage
@@ -28,6 +30,13 @@ class Weapon
     public function getImage(): string
     {
         return 'assets/images/' . $this->image;
+    }
+    /**
+     * Get the value of image
+     */ 
+    public function setImage(string $image): void
+    {
+        $this->image = $image;
     }
 
 }

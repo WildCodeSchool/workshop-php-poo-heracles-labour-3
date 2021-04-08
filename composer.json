@@ -1,12 +1,16 @@
 {
     "name": "sylvain/poo_avatar",
     "require": {
-        "phpunit/phpunit": "^9.5"
     },
     "authors": [
         {
             "name": "Sylvain Blondeau",
             "email": "sylvain.blondeau@wildcodeschool.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
 }
