@@ -44,9 +44,9 @@ HINT: en PHP, la racine carrée se calcule grace à la [fonction `sqrt()`](https
 
 Créer une méthode `getDistance()` dans Arena prenant 2 objets `Fighter` en paramètre, qui retournera la distance entre ces deux combattants. Une fois cela réalisé, réactualise. La distance devrait s'afficher sur la carte au survol d'un oiseau par la souris.
 
-- Maintenant que tu peux calculer un éloignement, ajoutant la notion de "portée" aux attaques. De base, un combattant sans arme ne devrait pas pouvoir frapper plus loin qu'un adversaire sur une case adjaçante (pas d'attaque diagonale). Ajoute la propriété `$range` (integer à 1 par défaut) et la méthode `getRange()`.
+- Maintenant que tu peux calculer un éloignement, ajoutant la notion de "portée" aux attaques. De base, un combattant sans arme ne devrait pas pouvoir frapper plus loin qu'un adversaire sur une case adjaçante. Ajoute la propriété `$range` (float à 1 par défaut) et la méthode `getRange()`.
 
-- Ajoute une propriété `range` (également à 1 par défaut) sur les armes). Dans `Hero` uniquement, ajoute un `getRange()` qui aditionnera la portée de base du combattant à celle de l'arme qu'il porte. Ainsi Heracles avec une épée devrait avoir une portée de 2.
+- Ajoute une propriété `range` (float à 0 par défaut) sur les armes. Dans `Hero` uniquement, ajoute un `getRange()` qui aditionnera la portée de base du combattant à celle de l'arme qu'il porte. Ainsi Heracles avec une épée devrait avoir une portée de 1.5 (ce qui doit lui permettre d'attaquer maintenant en diagonale).
 
 - Dans `Arena`, créé une méthode `touchable()` prenant en 1er paramètre l'attaquant et en second l'attaqué. Cette méthode doit renvoyer `true` si l'attaqué est à portée de l'attaquant, c'est-à-dire si ça distance de l'attaquée est inférieure ou égale à la portée (range) de l'attaqué. Une fois cela fait, actualise. Tu devrais voir apparaître en couleur les oiseaux à portée d'Héraclès, et en grisé ceux qui ne le sont pas. N'hésite pas à modifier les coordonnées du héro pour faire varier les distances. 
 
