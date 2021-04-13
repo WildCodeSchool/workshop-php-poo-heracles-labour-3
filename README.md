@@ -10,7 +10,7 @@ Fais un `composer install`
 
 Un nouvelle épreuve attend notre champion, tuer les oiseaux monstrueux du lac Stymphale. Héraclès (et son équipement) ainsi que trois oiseaux sont déjà instanciés dans *index.php*.
 
-> Pour le moment, les monstres et les héros sont tous deux des instances de la classe `Fighter`. Cepandant, s'ils ont des propriétés communes propre aux combattants(name, life, dexterity, strength...) certaines caractéristiques diffèrent. Par exemple, seuls les Hero vont pouvoir porter de l'équipement (Shield, Weapon...).
+> Pour le moment, les monstres et les héros sont tous deux des instances de la classe `Fighter`. Cependant, s'ils ont des propriétés communes propres aux combattants (name, life, dexterity, strength...) certaines caractéristiques diffèrent. Par exemple, seuls les Hero vont pouvoir porter de l'équipement (Shield, Weapon...).
 >
 > Il ne devrait donc pas être possible d'attribuer une épée à un sanglier, or c'est pour le moment possible. Pour régler ce problème de conception, il faut passer par l'héritage.
 
@@ -51,4 +51,4 @@ Créer une méthode `getDistance()` dans Arena prenant 2 objets `Fighter` en par
 - Dans `Arena`, créé une méthode `touchable()` prenant en 1er paramètre l'attaquant et en second l'attaqué. Cette méthode doit renvoyer `true` si l'attaqué est à portée de l'attaquant, c'est-à-dire si ça distance de l'attaquée est inférieure ou égale à la portée (range) de l'attaqué. Une fois cela fait, actualise. Tu devrais voir apparaître en couleur les oiseaux à portée d'Héraclès, et en grisé ceux qui ne le sont pas. N'hésite pas à modifier les coordonnées du héro pour faire varier les distances. 
 
 - Crée une nouvelle arme `$bow`, instance de Weapon, qui possède un range de 5, des dégâts à 8, et l'image 'bow.svg' (ajouter un `__construct` + des *getters* / *setters* serait sans doute une bonne idée). Attribue cette arme à Héraclès en remplacement de son actuelle épée. Actualise et vérifie dans l'inventaire que l'arme apparaît bien. 
-Sur la carte, tu devrais constaté que les oiseaux sont "atteignable" de plus loin puisque cette arme a un range() bien plus important.
+Sur la carte, tu devrais constater que les oiseaux sont "atteignables" de plus loin puisque cette arme a un range() bien plus important.
