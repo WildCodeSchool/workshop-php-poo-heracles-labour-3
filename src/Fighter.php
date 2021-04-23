@@ -13,7 +13,7 @@ class Fighter
 
     private int $strength;
     private int $dexterity;
-    protected string $image = 'fighter.svg';
+    private string $image = 'fighter.svg';
 
     private int $life = self::MAX_LIFE;
 

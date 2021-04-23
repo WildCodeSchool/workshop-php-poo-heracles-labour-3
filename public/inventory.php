@@ -33,11 +33,13 @@
             <?php if (method_exists($heracles, 'getDefense')) {
                 echo $heracles->getDefense();
             }  ?>
-
         </div>
         <div data-slot="Life" class="slot statistic"><?= $heracles->getLife() ?></div>
-        <div data-slot="Magic" class="slot statistic"></div>
-    </div>
+        <div data-slot="Range" class="slot statistic">
+            <?php if (method_exists($heracles, 'getRange')) {
+                echo $heracles->getRange();
+            }  ?>
+        </div>    </div>
     <div class="character">
         <h2 class="name"><?= $heracles->getName() ?></h2>
         <div class="avatar">
