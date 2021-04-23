@@ -4,9 +4,9 @@ namespace App;
 
 class Weapon
 {
-    protected int $damage = 10;
+    private int $damage = 10;
 
-    protected string $image = 'sword.svg';
+    private string $image = 'sword.svg';
 
     public function getDamage(): int
     {
