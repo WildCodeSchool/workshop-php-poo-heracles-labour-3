@@ -63,3 +63,8 @@ Crée une méthode `getDistance()` dans Arena prenant deux objets `Fighter` en p
 
 - Dans *index.php*, crée une nouvelle arme `$bow`, instance de Weapon, qui possède un range de 5, des dégâts à 8, et l'image **bow.svg** (ajouter un `__construct` + des *getters* / *setters* serait sans doute une bonne idée à ce stade). Attribue cette arme à Héraclès en remplacement de son actuelle épée. Actualise et vérifie dans l'inventaire que l'arme apparaît bien.  
 Sur la carte, tu devrais constater que les oiseaux sont "atteignables" de plus loin puisque cette arme a un *range* bien plus important.
+
+
+**Épisode suivant**  
+[Les juments de Diomède](https://wildcodeschool.github.io/workshop-php-poo-heracles-labour-4/)
+{: .text-center :}
